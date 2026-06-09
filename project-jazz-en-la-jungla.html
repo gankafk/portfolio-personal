@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en" data-page="projects">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jazz en la Jungla — Serverless on AWS · Juanma Escudier</title>
+  <meta name="description" content="Case study: Jazz en la Jungla — a serverless web platform on AWS using S3, CloudFront, API Gateway, Lambda and DynamoDB, provisioned with Terraform and deployed via GitHub Actions.">
+  <meta name="theme-color" content="#0A0D12">
+  <link rel="canonical" href="https://juanma-escudier.pages.dev/project-jazz-en-la-jungla.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Jazz en la Jungla — Serverless on AWS">
+  <meta property="og:description" content="A serverless web platform on AWS — architecture, Terraform IaC and GitHub Actions CI/CD.">
+  <meta property="og:url" content="https://juanma-escudier.pages.dev/project-jazz-en-la-jungla.html">
+  <meta property="og:image" content="https://juanma-escudier.pages.dev/assets/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://juanma-escudier.pages.dev/assets/og-image.png">
+
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareSourceCode",
+    "name": "Jazz en la Jungla",
+    "description": "Serverless web platform on AWS using S3, CloudFront, API Gateway, Lambda and DynamoDB, provisioned with Terraform and deployed via GitHub Actions.",
+    "author": { "@type": "Person", "name": "Juan Manuel Escudier Vázquez" },
+    "codeRepository": "https://github.com/gankafk",
+    "url": "https://www.jazzenlajungla.com",
+    "programmingLanguage": ["Python", "HCL", "JavaScript"],
+    "runtimePlatform": "Amazon Web Services"
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main" data-i18n="a11y.skip">Skip to content</a>
+
+  <header class="nav">
+    <nav class="container nav-inner" aria-label="Primary">
+      <a class="brand" href="index.html" aria-label="Juanma Escudier — home">
+        <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 7l4 5-4 5" stroke="currentColor" stroke-width="2"/><path d="M12 17h7" stroke="currentColor" stroke-width="2"/></svg></span>
+        <span>Juanma<span class="blink">_</span></span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+        <li><a href="skills.html" data-i18n="nav.skills">Skills</a></li>
+        <li><a href="projects.html" class="active" data-i18n="nav.projects">Projects</a></li>
+        <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <div class="lang-toggle" role="group" aria-label="Language">
+          <button type="button" data-lang="en" aria-pressed="true">EN</button>
+          <button type="button" data-lang="es" aria-pressed="false">ES</button>
+        </div>
+        <button class="nav-burger" id="navBurger" aria-label="Menu" aria-controls="navLinks" aria-expanded="false"><span></span></button>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+
+    <!-- ===== DETAIL HERO ===== -->
+    <section class="section" style="padding-bottom: var(--sp-6)">
+      <div class="container detail-hero">
+        <p class="breadcrumb reveal">
+          <a href="index.html" data-i18n="nav.home">Home</a><span class="sep">/</span>
+          <a href="projects.html" data-i18n="nav.projects">Projects</a><span class="sep">/</span>
+          <span>Jazz en la Jungla</span>
+        </p>
+        <p class="section-label reveal"><span data-i18n="jazz.label">case study · serverless</span></p>
+        <h1 class="reveal">Jazz en la Jungla</h1>
+        <p class="lead reveal" data-i18n="jazz.lead">A serverless web platform on AWS — static content delivered globally through CloudFront, a Lambda-backed API behind API Gateway, and DynamoDB for persistence. Infrastructure defined in Terraform and shipped continuously with GitHub Actions.</p>
+        <div class="hero-actions reveal" data-reveal-delay="1">
+          <a class="btn btn-primary" href="https://www.jazzenlajungla.com" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M19 13v6H5V5h6" stroke="currentColor" stroke-width="2"/></svg>
+            <span data-i18n="projects.btn.live">Live demo</span>
+          </a>
+          <a class="btn" href="https://github.com/gankafk" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49 0-.24-.01-.88-.01-1.73-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.49-1.11-1.49-.91-.64.07-.62.07-.62 1 .07 1.53 1.05 1.53 1.05.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.31.1-2.72 0 0 .84-.27 2.75 1.05a9.4 9.4 0 015 0c1.91-1.32 2.75-1.05 2.75-1.05.55 1.41.2 2.46.1 2.72.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.79-4.57 5.05.36.32.68.94.68 1.9 0 1.37-.01 2.48-.01 2.82 0 .27.18.6.69.49A10.02 10.02 0 0022 12.25C22 6.58 17.52 2 12 2z"/></svg>
+            <span data-i18n="jazz.btn.repo">Source code</span>
+          </a>
+          <a class="btn btn-ghost" href="projects.html">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2"/></svg>
+            <span data-i18n="jazz.btn.back">All projects</span>
+          </a>
+        </div>
+
+        <!-- spec strip -->
+        <div class="spec-grid reveal" data-reveal-delay="2">
+          <div class="spec"><div class="k" data-i18n="jazz.spec.role">Role</div><div class="v" data-i18n="jazz.spec.role.v">Design &amp; build</div></div>
+          <div class="spec"><div class="k" data-i18n="jazz.spec.pattern">Pattern</div><div class="v" data-i18n="jazz.spec.pattern.v">Serverless</div></div>
+          <div class="spec"><div class="k" data-i18n="jazz.spec.cloud">Cloud</div><div class="v">AWS</div></div>
+          <div class="spec"><div class="k" data-i18n="jazz.spec.iac">IaC + CI/CD</div><div class="v">Terraform · GH Actions</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== ARCHITECTURE DIAGRAM ===== -->
+    <section class="section" style="padding-top: 0; border-top: none;">
+      <div class="container">
+        <p class="section-label reveal"><span data-i18n="jazz.arch.label">architecture</span></p>
+        <h2 class="section-title reveal" data-i18n="jazz.arch.title">System architecture</h2>
+        <div class="arch-figure reveal" data-reveal-delay="1">
+          <svg viewBox="0 0 940 560" role="img" aria-label="AWS architecture diagram for Jazz en la Jungla: request flow through CloudFront to S3 and API Gateway, Lambda and DynamoDB, with a GitHub Actions and Terraform delivery pipeline." xmlns="http://www.w3.org/2000/svg"><defs><marker id="ar" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0 0L6 3L0 6" fill="none" stroke="#9BA6B7" stroke-width="1.4"/></marker><marker id="arp" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0 0L6 3L0 6" fill="none" stroke="#8C4FFF" stroke-width="1.4"/></marker></defs><rect x="190" y="44" width="726" height="300" fill="none" stroke="#2C3645" stroke-dasharray="5 5"/><text x="900" y="62" text-anchor="end" font-family="Geist Mono, monospace" font-size="11" fill="#5E6A7B">AWS CLOUD · eu-west</text><rect x="216" y="60" width="124" height="92" fill="#0D1219" stroke="#212834"/><rect x="216" y="60" width="124" height="3" fill="#7AA116"/><path d="M 263.0 82 L 293.0 82 L 289.0 109 L 267.0 109 Z" fill="#7AA116"/><ellipse cx="278.0" cy="82" rx="15" ry="4.5" fill="#FFFFFF" opacity="0.92"/><ellipse cx="278.0" cy="82" rx="15" ry="4.5" fill="none" stroke="#7AA116" stroke-width="1"/><text x="278.0" y="126" text-anchor="middle" font-family="Geist, Arial, sans-serif" font-weight="600" font-size="14" fill="#FFFFFF">S3</text><text x="278.0" y="142" text-anchor="middle" font-family="Geist Mono, monospace" font-size="9.5" fill="#5E6A7B">static site</text><rect x="24" y="212" width="124" height="92" fill="#0D1219" stroke="#212834"/><rect x="24" y="212" width="124" height="3" fill="#FFFFFF"/><rect x="69.0" y="233" width="34" height="26" fill="none" stroke="#FFFFFF" stroke-width="2"/><line x1="69.0" y1="240" x2="103.0" y2="240" stroke="#FFFFFF" stroke-width="2"/><circle cx="74.0" cy="236.5" r="1.4" fill="#FFFFFF"/><circle cx="78.0" cy="236.5" r="1.4" fill="#FFFFFF"/><text x="86.0" y="278" text-anchor="middle" font-family="Geist, Arial, sans-serif" font-weight="600" font-size="14" fill="#FFFFFF">User</text><text x="86.0" y="294" text-anchor="middle" font-family="Geist Mono, monospace" font-size="9.5" fill="#5E6A7B">browser</text><rect x="216" y="212" width="124" height="92" fill="#0D1219" stroke="#212834"/><rect x="216" y="212" width="124" height="3" fill="#8C4FFF"/><circle cx="278.0" cy="246" r="16" fill="none" stroke="#8C4FFF" stroke-width="2"/><ellipse cx="278.0" cy="246" rx="7" ry="16" fill="none" stroke="#8C4FFF" stroke-width="1.6"/><line x1="262.0" y1="246" x2="294.0" y2="246" stroke="#8C4FFF" stroke-width="1.6"/><line x1="264.0" y1="238" x2="292.0" y2="238" stroke="#8C4FFF" stroke-width="1.2"/><line x1="264.0" y1="254" x2="292.0" y2="254" stroke="#8C4FFF" stroke-width="1.2"/><text x="278.0" y="278" text-anchor="middle" font-family="Geist, Arial, sans-serif" font-weight="600" font-size="14" fill="#FFFFFF">CloudFront</text><text x="278.0" y="294" text-anchor="middle" font-family="Geist Mono, monospace" font-size="9.5" fill="#5E6A7B">CDN · TLS</text><rect x="408" y="212" width="124" height="92" fill="#0D1219" stroke="#212834"/><rect x="408" y="212" width="124" height="3" fill="#E7157B"/><rect x="455.0" y="231" width="30" height="30" fill="none" stroke="#E7157B" stroke-width="2"/><path d="M 462.0 239 L 468.0 246 L 462.0 253" fill="none" stroke="#E7157B" stroke-width="2"/><path d="M 478.0 239 L 472.0 246 L 478.0 253" fill="none" stroke="#E7157B" stroke-width="2"/><text x="470.0" y="278" text-anchor="middle" font-family="Geist, Arial, sans-serif" font-weight="600" font-size="14" fill="#FFFFFF">API Gateway</text><text x="470.0" y="294" text-anchor="middle" font-family="Geist Mono, monospace" font-size="9.5" fill="#5E6A7B">REST</text><rect x="600" y="212" width="124" height="92" fill="#0D1219" stroke="#212834"/><rect x="600" y="212" width="124" height="3" fill="#ED7100"/><rect x="646.0" y="230" width="32" height="32" fill="none" stroke="#ED7100" stroke-width="1.5" opacity="0.55"/><path d="M 653.0 236 L 659.0 236 L 671.0 258 M 653.0 258 L 661.0 244" fill="none" stroke="#ED7100" stroke-width="2.6" stroke-linecap="square"/><text x="662.0" y="278" text-anchor="middle" font-family="Geist, Arial, sans-serif" font-weight="600" font-size="14" fill="#FFFFFF">Lambda</text><text x="662.0" y="294" text-anchor="middle" font-family="Geist Mono, monospace" font-size="9.5" fill="#5E6A7B">compute</text><rect x="792" y="212" width="124" height="92" fill="#0D1219" stroke="#212834"/><rect x="792" y="212" width="124" height="3" fill="#4D72F3"/><ellipse cx="854.0" cy="236" rx="14" ry="4.5" fill="none" stroke="#4D72F3" stroke-width="2"/><path d="M 840.0 236 L 840.0 256" stroke="#4D72F3" stroke-width="2"/><path d="M 868.0 236 L 868.0 256" stroke="#4D72F3" stroke-width="2"/><path d="M 840.0 246 a14 4.5 0 0 0 28 0" fill="none" stroke="#4D72F3" stroke-width="1.6"/><path d="M 840.0 256 a14 4.5 0 0 0 28 0" fill="none" stroke="#4D72F3" stroke-width="2"/><path d="M 856.0 243 L 851.0 248 L 855.0 248 L 852.0 253" fill="none" stroke="#4D72F3" stroke-width="1.6"/><text x="854.0" y="278" text-anchor="middle" font-family="Geist, Arial, sans-serif" font-weight="600" font-size="14" fill="#FFFFFF">DynamoDB</text><text x="854.0" y="294" text-anchor="middle" font-family="Geist Mono, monospace" font-size="9.5" fill="#5E6A7B">NoSQL</text><line x1="148" y1="258.0" x2="213" y2="258.0" stroke="#9BA6B7" stroke-width="1.5" marker-end="url(#ar)"/><text x="182.0" y="250.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="10" fill="#5E6A7B">HTTPS</text><line x1="340" y1="258.0" x2="405" y2="258.0" stroke="#9BA6B7" stroke-width="1.5" marker-end="url(#ar)"/><text x="374.0" y="250.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="10" fill="#5E6A7B">/api/*</text><line x1="532" y1="258.0" x2="597" y2="258.0" stroke="#9BA6B7" stroke-width="1.5" marker-end="url(#ar)"/><text x="566.0" y="250.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="10" fill="#5E6A7B">invoke</text><line x1="724" y1="258.0" x2="789" y2="258.0" stroke="#9BA6B7" stroke-width="1.5" marker-end="url(#ar)"/><text x="758.0" y="250.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="10" fill="#5E6A7B">query</text><line x1="278.0" y1="212" x2="278.0" y2="155" stroke="#8C4FFF" stroke-width="1.5" marker-end="url(#arp)"/><text x="286.0" y="182.0" font-family="Geist Mono, monospace" font-size="10" fill="#5E6A7B">origin</text><rect x="408" y="322" width="508" height="16" fill="none" stroke="#DD344C" stroke-width="1" opacity="0.55"/><g transform="translate(424,330) scale(0.42)"><path d="M 0 -15 L 13 -9 L 13 3 Q 13 13 0 16 Q -13 13 -13 3 L -13 -9 Z" fill="none" stroke="#DD344C" stroke-width="2"/><circle cx="0" cy="-2" r="3.4" fill="#DD344C"/><rect x="-1.4" y="-2" width="2.8" height="8" fill="#DD344C"/></g><text x="442" y="333" font-family="Geist Mono, monospace" font-size="9.5" fill="#9BA6B7">IAM — least-privilege roles &amp; policies</text><line x1="24" y1="392" x2="916" y2="392" stroke="#2C3645"/><text x="24" y="418" font-family="Geist Mono, monospace" font-size="11" fill="#5E6A7B">DELIVERY PIPELINE</text><rect x="24" y="438" width="124" height="92" fill="#0D1219" stroke="#212834"/><rect x="24" y="438" width="124" height="3" fill="#FFFFFF"/><g transform="translate(68.0,454) scale(1.5)"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49 0-.24-.01-.88-.01-1.73-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.49-1.11-1.49-.91-.64.07-.62.07-.62 1 .07 1.53 1.05 1.53 1.05.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.31.1-2.72 0 0 .84-.27 2.75 1.05a9.4 9.4 0 015 0c1.91-1.32 2.75-1.05 2.75-1.05.55 1.41.2 2.46.1 2.72.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.79-4.57 5.05.36.32.68.94.68 1.9 0 1.37-.01 2.48-.01 2.82 0 .27.18.6.69.49A10.02 10.02 0 0022 12.25C22 6.58 17.52 2 12 2z" fill="#FFFFFF"/></g><text x="86.0" y="504" text-anchor="middle" font-family="Geist, Arial, sans-serif" font-weight="600" font-size="14" fill="#FFFFFF">GitHub</text><text x="86.0" y="520" text-anchor="middle" font-family="Geist Mono, monospace" font-size="9.5" fill="#5E6A7B">source</text><rect x="216" y="438" width="124" height="92" fill="#0D1219" stroke="#212834"/><rect x="216" y="438" width="124" height="3" fill="#2088FF"/><circle cx="278.0" cy="472" r="15" fill="none" stroke="#2088FF" stroke-width="2"/><circle cx="278.0" cy="472" r="4.5" fill="none" stroke="#2088FF" stroke-width="2"/><path d="M 278.0 461 L 278.0 467.5 M 278.0 476.5 L 278.0 483 M 267.0 472 L 273.5 472 M 282.5 472 L 289.0 472" stroke="#2088FF" stroke-width="2"/><text x="278.0" y="504" text-anchor="middle" font-family="Geist, Arial, sans-serif" font-weight="600" font-size="14" fill="#FFFFFF">GitHub Actions</text><text x="278.0" y="520" text-anchor="middle" font-family="Geist Mono, monospace" font-size="9.5" fill="#5E6A7B">CI/CD</text><rect x="408" y="438" width="124" height="92" fill="#0D1219" stroke="#212834"/><rect x="408" y="438" width="124" height="3" fill="#7B42BC"/><path d="M 457.0 458 L 466.0 463 L 466.0 474 L 457.0 469 Z" fill="#7B42BC"/><path d="M 467.5 464 L 476.5 469 L 476.5 480 L 467.5 475 Z" fill="#7B42BC"/><path d="M 467.5 476 L 476.5 481 L 476.5 492 L 467.5 487 Z" fill="#7B42BC"/><path d="M 478.0 458 L 487.0 463 L 487.0 474 L 478.0 469 Z" fill="#7B42BC"/><text x="470.0" y="504" text-anchor="middle" font-family="Geist, Arial, sans-serif" font-weight="600" font-size="14" fill="#FFFFFF">Terraform</text><text x="470.0" y="520" text-anchor="middle" font-family="Geist Mono, monospace" font-size="9.5" fill="#5E6A7B">IaC</text><line x1="148" y1="484.0" x2="213" y2="484.0" stroke="#9BA6B7" stroke-width="1.5" marker-end="url(#ar)"/><text x="182.0" y="476.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="10" fill="#5E6A7B">push</text><line x1="340" y1="484.0" x2="405" y2="484.0" stroke="#9BA6B7" stroke-width="1.5" marker-end="url(#ar)"/><text x="374.0" y="476.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="10" fill="#5E6A7B">workflow</text><path d="M 532 484.0 L 566 484.0 L 566 344" fill="none" stroke="#9BA6B7" stroke-width="1.5" marker-end="url(#ar)"/><text x="606" y="476.0" text-anchor="middle" font-family="Geist Mono, monospace" font-size="10" fill="#5E6A7B">terraform apply · provisions</text></svg>
+          <p class="arch-caption" data-i18n="jazz.arch.caption">Request flow: the browser hits CloudFront, which serves static assets from S3 and routes /api/* to API Gateway → Lambda → DynamoDB. IAM enforces least-privilege access.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== OVERVIEW / DECISIONS / STACK ===== -->
+    <section class="section">
+      <div class="container">
+        <div class="content-block">
+          <p class="section-label reveal"><span data-i18n="jazz.ov.label">overview</span></p>
+          <h2 class="reveal" data-i18n="jazz.ov.title">What it is &amp; why I built it</h2>
+          <p class="reveal" data-i18n="jazz.ov.p1">Jazz en la Jungla is a production web platform built to a fully <strong>serverless</strong> design — no servers to patch, pay-per-use, and able to scale to zero. It was my vehicle for putting an end-to-end AWS architecture into practice: global static delivery, a managed API, and a NoSQL data layer, all reproducible from code.</p>
+          <p class="reveal" data-i18n="jazz.ov.p2">The goal was an architecture a team could trust: <strong>reproducible</strong> through infrastructure as code, <strong>automated</strong> through CI/CD, and <strong>secure</strong> through least-privilege IAM.</p>
+
+          <h3 class="reveal" data-i18n="jazz.ov.h3">Highlights</h3>
+          <ul class="reveal">
+            <li data-i18n="jazz.ov.l1"><strong>Global, cached delivery</strong> — static front end on S3, distributed by CloudFront with HTTPS at the edge.</li>
+            <li data-i18n="jazz.ov.l2"><strong>Managed API</strong> — API Gateway routes requests to Lambda functions; no servers to maintain.</li>
+            <li data-i18n="jazz.ov.l3"><strong>NoSQL persistence</strong> — DynamoDB for fast, scalable, fully managed storage.</li>
+            <li data-i18n="jazz.ov.l4"><strong>Infrastructure as code</strong> — the whole stack is defined in Terraform and version-controlled.</li>
+            <li data-i18n="jazz.ov.l5"><strong>Continuous deployment</strong> — GitHub Actions builds and ships changes on every push.</li>
+          </ul>
+        </div>
+
+        <!-- decisions -->
+        <div class="content-block" style="max-width: none;">
+          <p class="section-label reveal" style="margin-top: var(--sp-7)"><span data-i18n="jazz.dec.label">engineering decisions</span></p>
+          <h2 class="reveal" data-i18n="jazz.dec.title">Key decisions</h2>
+          <div class="decision-grid">
+            <div class="decision reveal">
+              <p class="q" data-i18n="jazz.dec.1.q">// why serverless?</p>
+              <h4 data-i18n="jazz.dec.1.h">Serverless over EC2</h4>
+              <p data-i18n="jazz.dec.1.b">No instances to manage or patch, automatic scaling, and pay-per-request economics — ideal for variable, unpredictable traffic.</p>
+            </div>
+            <div class="decision reveal" data-reveal-delay="1">
+              <p class="q" data-i18n="jazz.dec.2.q">// why CloudFront + S3?</p>
+              <h4 data-i18n="jazz.dec.2.h">CDN-first delivery</h4>
+              <p data-i18n="jazz.dec.2.b">Caching static assets at the edge cuts latency worldwide and offloads origin traffic, while S3 gives durable, cheap hosting.</p>
+            </div>
+            <div class="decision reveal" data-reveal-delay="2">
+              <p class="q" data-i18n="jazz.dec.3.q">// why Terraform?</p>
+              <h4 data-i18n="jazz.dec.3.h">Infrastructure as code</h4>
+              <p data-i18n="jazz.dec.3.b">Declarative, reviewable and reproducible. The environment can be torn down and rebuilt identically — no console click-ops drift.</p>
+            </div>
+            <div class="decision reveal" data-reveal-delay="3">
+              <p class="q" data-i18n="jazz.dec.4.q">// why GitHub Actions?</p>
+              <h4 data-i18n="jazz.dec.4.h">Automated delivery</h4>
+              <p data-i18n="jazz.dec.4.b">Every push runs the pipeline, keeping deploys consistent and removing manual, error-prone release steps.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- stack table -->
+        <div class="content-block" style="max-width: none;">
+          <p class="section-label reveal" style="margin-top: var(--sp-7)"><span data-i18n="jazz.stack.label">tech stack</span></p>
+          <h2 class="reveal" data-i18n="jazz.stack.title">Stack &amp; responsibilities</h2>
+          <table class="stack-table reveal">
+            <thead>
+              <tr>
+                <th data-i18n="jazz.stack.th.tech">Technology</th>
+                <th data-i18n="jazz.stack.th.layer">Layer</th>
+                <th data-i18n="jazz.stack.th.role">Responsibility</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Amazon S3</td><td data-i18n="jazz.stack.l.storage">Storage</td><td data-i18n="jazz.stack.r.s3">Hosts the static front end (HTML, CSS, JS).</td></tr>
+              <tr><td>CloudFront</td><td data-i18n="jazz.stack.l.delivery">Delivery</td><td data-i18n="jazz.stack.r.cf">Global CDN with HTTPS and edge caching.</td></tr>
+              <tr><td>API Gateway</td><td data-i18n="jazz.stack.l.api">API</td><td data-i18n="jazz.stack.r.api">Exposes REST endpoints and routes to Lambda.</td></tr>
+              <tr><td>AWS Lambda</td><td data-i18n="jazz.stack.l.compute">Compute</td><td data-i18n="jazz.stack.r.lambda">Runs backend logic on demand, no servers.</td></tr>
+              <tr><td>DynamoDB</td><td data-i18n="jazz.stack.l.data">Data</td><td data-i18n="jazz.stack.r.ddb">Managed NoSQL persistence layer.</td></tr>
+              <tr><td>Terraform</td><td data-i18n="jazz.stack.l.iac">IaC</td><td data-i18n="jazz.stack.r.tf">Declarative provisioning of all resources.</td></tr>
+              <tr><td>GitHub Actions</td><td data-i18n="jazz.stack.l.cicd">CI/CD</td><td data-i18n="jazz.stack.r.gha">Builds and deploys on every push.</td></tr>
+              <tr><td>IAM</td><td data-i18n="jazz.stack.l.sec">Security</td><td data-i18n="jazz.stack.r.iam">Least-privilege roles and policies.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- pipeline snippet -->
+        <div class="content-block" style="max-width: none;">
+          <p class="section-label reveal" style="margin-top: var(--sp-7)"><span data-i18n="jazz.pipe.label">delivery pipeline</span></p>
+          <h2 class="reveal" data-i18n="jazz.pipe.title">From push to production</h2>
+          <p class="reveal" data-i18n="jazz.pipe.intro">A simplified view of the GitHub Actions workflow that provisions infrastructure and ships the site.</p>
+          <div class="code-block reveal" data-reveal-delay="1">
+            <div class="bar">.github/workflows/deploy.yml</div>
+<pre><span class="c"># Triggered on every push to main</span>
+on:
+  push:
+    branches: [ <span class="s">main</span> ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - <span class="k">terraform</span> init
+      - <span class="k">terraform</span> apply -auto-approve   <span class="c"># provision AWS</span>
+      - aws s3 sync ./site s3://<span class="s">$BUCKET</span>    <span class="c"># publish front end</span>
+      - aws cloudfront create-invalidation <span class="c"># bust the cache</span>
+</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CTA ===== -->
+    <section class="section" aria-label="Call to action">
+      <div class="container">
+        <div class="cta reveal">
+          <div>
+            <h2 data-i18n="jazz.cta.title">Want the full walkthrough?</h2>
+            <p data-i18n="jazz.cta.sub">See the live site and the source, or get in touch to talk through the architecture.</p>
+          </div>
+          <div class="actions">
+            <a class="btn btn-primary" href="https://www.jazzenlajungla.com" target="_blank" rel="noopener"><span data-i18n="projects.btn.live">Live demo</span></a>
+            <a class="btn" href="contact.html"><span data-i18n="cta.contact">Get in touch</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>
+        <a class="brand" href="index.html">
+          <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 7l4 5-4 5" stroke="currentColor" stroke-width="2"/><path d="M12 17h7" stroke="currentColor" stroke-width="2"/></svg></span>
+          <span>Juanma Escudier</span>
+        </a>
+        <p class="footer-meta">Cloud &amp; DevOps Engineer · Cádiz, ES<br><span data-i18n="footer.tagline">building reliable, automated infrastructure</span></p>
+        <p class="footer-build"><span class="ok">●</span> <span data-i18n="footer.build">Built with HTML, CSS, JavaScript · deployed on Cloudflare Pages</span></p>
+      </div>
+      <div class="footer-links" aria-label="Footer">
+        <a href="index.html" data-i18n="nav.home">Home</a>
+        <a href="skills.html" data-i18n="nav.skills">Skills</a>
+        <a href="projects.html" data-i18n="nav.projects">Projects</a>
+        <a href="contact.html" data-i18n="nav.contact">Contact</a>
+        <a href="assets/Juan-Manuel-Escudier-CV.pdf" download data-i18n="footer.cv">CV (PDF)</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

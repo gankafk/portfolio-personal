@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en" data-page="skills">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skills &amp; Learning Lab — Juanma Escudier</title>
+  <meta name="description" content="Technical skills matrix and hands-on learning lab — AWS, Docker, Terraform, Linux, CI/CD, Bash and Python by Juanma Escudier, Cloud &amp; DevOps Engineer.">
+  <meta name="theme-color" content="#0A0D12">
+  <link rel="canonical" href="https://juanma-escudier.pages.dev/skills.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Skills &amp; Learning Lab — Juanma Escudier">
+  <meta property="og:description" content="Technical skills matrix and hands-on learning lab — AWS, Docker, Terraform, Linux, CI/CD.">
+  <meta property="og:url" content="https://juanma-escudier.pages.dev/skills.html">
+  <meta property="og:image" content="https://juanma-escudier.pages.dev/assets/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://juanma-escudier.pages.dev/assets/og-image.png">
+
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main" data-i18n="a11y.skip">Skip to content</a>
+
+  <header class="nav">
+    <nav class="container nav-inner" aria-label="Primary">
+      <a class="brand" href="index.html" aria-label="Juanma Escudier — home">
+        <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 7l4 5-4 5" stroke="currentColor" stroke-width="2"/><path d="M12 17h7" stroke="currentColor" stroke-width="2"/></svg></span>
+        <span>Juanma<span class="blink">_</span></span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+        <li><a href="skills.html" class="active" data-i18n="nav.skills">Skills</a></li>
+        <li><a href="projects.html" data-i18n="nav.projects">Projects</a></li>
+        <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <div class="lang-toggle" role="group" aria-label="Language">
+          <button type="button" data-lang="en" aria-pressed="true">EN</button>
+          <button type="button" data-lang="es" aria-pressed="false">ES</button>
+        </div>
+        <button class="nav-burger" id="navBurger" aria-label="Menu" aria-controls="navLinks" aria-expanded="false"><span></span></button>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+
+    <!-- ============ PAGE HEADER ============ -->
+    <section class="section" style="padding-bottom: var(--sp-7)">
+      <div class="container">
+        <p class="section-label reveal"><span data-i18n="skills.label">capabilities</span></p>
+        <h1 class="section-title reveal" data-i18n="skills.title">Technical skills matrix</h1>
+        <p class="section-intro reveal" data-i18n="skills.intro">A grouped view of the tools and platforms I work with across cloud, automation, infrastructure and programming.</p>
+      </div>
+    </section>
+
+    <!-- ============ SKILLS MATRIX ============ -->
+    <section class="section" style="padding-top: 0; border-top: none;" aria-label="Skills">
+      <div class="container">
+        <div class="skills-grid">
+          <article class="card skill-card reveal">
+            <div class="head"><h3 data-i18n="skills.cat.cloud">Cloud</h3><span class="idx">01</span></div>
+            <ul class="skill-list">
+              <li>AWS</li><li>Azure</li><li>IAM</li><li>S3</li><li>CloudFront</li><li>Lambda</li><li>DynamoDB</li><li>EventBridge</li>
+            </ul>
+          </article>
+          <article class="card skill-card reveal" data-reveal-delay="1">
+            <div class="head"><h3 data-i18n="skills.cat.devops">DevOps</h3><span class="idx">02</span></div>
+            <ul class="skill-list">
+              <li>Docker</li><li>Git</li><li>GitHub Actions</li><li>CI/CD</li>
+            </ul>
+          </article>
+          <article class="card skill-card reveal" data-reveal-delay="2">
+            <div class="head"><h3 data-i18n="skills.cat.infra">Infrastructure</h3><span class="idx">03</span></div>
+            <ul class="skill-list">
+              <li>Linux</li><li data-i18n="skills.item.networking">Networking</li><li>Bash</li><li>Terraform</li>
+            </ul>
+          </article>
+          <article class="card skill-card reveal" data-reveal-delay="3">
+            <div class="head"><h3 data-i18n="skills.cat.prog">Programming</h3><span class="idx">04</span></div>
+            <ul class="skill-list">
+              <li>Python</li><li>PL/SQL</li><li>PartiQL</li><li data-i18n="skills.item.shell">Shell scripting</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ LEARNING LAB ============ -->
+    <section class="section" id="lab">
+      <div class="container">
+        <p class="section-label reveal"><span data-i18n="lab.label">learning lab</span></p>
+        <h2 class="section-title reveal" data-i18n="lab.title">Hands-on, always shipping</h2>
+        <p class="section-intro reveal" data-i18n="lab.intro">Ongoing practical labs where I build, break and automate real environments. Progress reflects current depth, not a finish line.</p>
+        <div class="lab-grid">
+
+          <article class="card lab-card reveal">
+            <div class="head">
+              <h3><span class="tag">~/</span> Linux Lab</h3>
+              <span class="status-badge active"><span class="dot"></span><span data-i18n="lab.status.active">ACTIVE</span></span>
+            </div>
+            <p class="lab-desc" data-i18n="lab.linux.desc">System administration on the command line: users &amp; permissions, services, processes, networking and shell scripting.</p>
+            <div class="tag-row"><span class="tag">Bash</span><span class="tag">systemd</span><span class="tag">cron</span><span class="tag">SSH</span><span class="tag">VirtualBox</span></div>
+            <div class="progress-wrap">
+              <div class="progress-meta"><span data-i18n="lab.progress">proficiency</span><span>75%</span></div>
+              <div class="progress-bar"><div class="progress-fill" data-progress="75"></div></div>
+            </div>
+          </article>
+
+          <article class="card lab-card reveal" data-reveal-delay="1">
+            <div class="head">
+              <h3><span class="tag">~/</span> AWS Lab</h3>
+              <span class="status-badge active"><span class="dot"></span><span data-i18n="lab.status.active">ACTIVE</span></span>
+            </div>
+            <p class="lab-desc" data-i18n="lab.aws.desc">Building serverless and static-hosting architectures: S3, CloudFront, Lambda, API Gateway, DynamoDB and IAM least-privilege.</p>
+            <div class="tag-row"><span class="tag">S3</span><span class="tag">CloudFront</span><span class="tag">Lambda</span><span class="tag">DynamoDB</span><span class="tag">IAM</span></div>
+            <div class="progress-wrap">
+              <div class="progress-meta"><span data-i18n="lab.progress">proficiency</span><span>70%</span></div>
+              <div class="progress-bar"><div class="progress-fill" data-progress="70"></div></div>
+            </div>
+          </article>
+
+          <article class="card lab-card reveal" data-reveal-delay="2">
+            <div class="head">
+              <h3><span class="tag">~/</span> Docker Lab</h3>
+              <span class="status-badge progress"><span class="dot"></span><span data-i18n="lab.status.progress">IN PROGRESS</span></span>
+            </div>
+            <p class="lab-desc" data-i18n="lab.docker.desc">Containerising applications, writing Dockerfiles, multi-stage builds, volumes, networks and Compose for local stacks.</p>
+            <div class="tag-row"><span class="tag">Dockerfile</span><span class="tag">Compose</span><span class="tag">Volumes</span><span class="tag">Registry</span></div>
+            <div class="progress-wrap">
+              <div class="progress-meta"><span data-i18n="lab.progress">proficiency</span><span>55%</span></div>
+              <div class="progress-bar"><div class="progress-fill" data-progress="55"></div></div>
+            </div>
+          </article>
+
+          <article class="card lab-card reveal" data-reveal-delay="3">
+            <div class="head">
+              <h3><span class="tag">~/</span> Terraform Lab</h3>
+              <span class="status-badge progress"><span class="dot"></span><span data-i18n="lab.status.progress">IN PROGRESS</span></span>
+            </div>
+            <p class="lab-desc" data-i18n="lab.terraform.desc">Provisioning AWS infrastructure as code: providers, variables, state, modules and reproducible environments.</p>
+            <div class="tag-row"><span class="tag">HCL</span><span class="tag">Providers</span><span class="tag">Modules</span><span class="tag">State</span></div>
+            <div class="progress-wrap">
+              <div class="progress-meta"><span data-i18n="lab.progress">proficiency</span><span>45%</span></div>
+              <div class="progress-bar"><div class="progress-fill" data-progress="45"></div></div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CTA ============ -->
+    <section class="section" aria-label="Call to action">
+      <div class="container">
+        <div class="cta reveal">
+          <div>
+            <h2 data-i18n="skills.cta.title">See these skills applied</h2>
+            <p data-i18n="skills.cta.sub">Explore the projects where this stack comes together in production.</p>
+          </div>
+          <div class="actions">
+            <a class="btn btn-primary" href="projects.html"><span data-i18n="cta.projects">See the work</span></a>
+            <a class="btn" href="assets/Juan-Manuel-Escudier-CV.pdf" download><span data-i18n="hero.cta.cv">Download CV</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>
+        <a class="brand" href="index.html">
+          <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 7l4 5-4 5" stroke="currentColor" stroke-width="2"/><path d="M12 17h7" stroke="currentColor" stroke-width="2"/></svg></span>
+          <span>Juanma Escudier</span>
+        </a>
+        <p class="footer-meta">Cloud &amp; DevOps Engineer · Cádiz, ES<br><span data-i18n="footer.tagline">building reliable, automated infrastructure</span></p>
+        <p class="footer-build"><span class="ok">●</span> <span data-i18n="footer.build">Built with HTML, CSS, JavaScript · deployed on Cloudflare Pages</span></p>
+      </div>
+      <div class="footer-links" aria-label="Footer">
+        <a href="index.html" data-i18n="nav.home">Home</a>
+        <a href="skills.html" data-i18n="nav.skills">Skills</a>
+        <a href="projects.html" data-i18n="nav.projects">Projects</a>
+        <a href="contact.html" data-i18n="nav.contact">Contact</a>
+        <a href="assets/Juan-Manuel-Escudier-CV.pdf" download data-i18n="footer.cv">CV (PDF)</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
