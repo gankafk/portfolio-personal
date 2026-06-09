@@ -13,6 +13,7 @@
   var I18N = {
     /* shared */
     "a11y.skip": { en: "Skip to content", es: "Saltar al contenido" },
+    "arch.hint": { en: "Swipe to explore the full diagram", es: "Desliza para ver el diagrama completo" },
     "nav.home": { en: "Home", es: "Inicio" },
     "nav.skills": { en: "Skills", es: "Competencias" },
     "nav.projects": { en: "Projects", es: "Proyectos" },

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://juanma-escudier.pages.dev/sitemap.xml
+Sitemap: https://www.juanmaescudier.com/sitemap.xml
