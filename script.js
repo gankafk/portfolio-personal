@@ -76,7 +76,7 @@
     "tl.2.tag": { en: "teaching · communication", es: "docencia · comunicación" },
     "tl.3.h": { en: "ASIR Student", es: "Estudiante de ASIR" },
     "tl.3.org": { en: "Higher Diploma in Network Systems Administration · GPA 9.73/10", es: "Técnico Superior en Administración de Sistemas Informáticos en Red · Expediente 9,73/10" },
-    "tl.3.b": { en: "Formal training in Linux administration, networking, virtualisation and databases — top of class.", es: "Formación reglada en administración Linux, redes, virtualización y bases de datos — primero de la clase." },
+    "tl.3.b": { en: "Formal training in Linux administration, networking, virtualisation and databases.", es: "Formación reglada en administración Linux, redes, virtualización y bases de datos." },
     "tl.3.tag": { en: "linux · networking · systems", es: "linux · redes · sistemas" },
     "tl.4.h": { en: "Cloud &amp; DevOps Transition", es: "Transición a Cloud y DevOps" },
     "tl.4.org": { en: "Self-directed · hands-on labs &amp; projects", es: "Autodidacta · labs y proyectos prácticos" },
