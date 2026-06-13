@@ -1,6 +1,6 @@
 # Juanma Escudier — Portfolio
 
-![Juanma Escudier — Cloud & DevOps Engineer](assets/og-image.png)
+![Juanma Escudier — Cloud & DevOps Engineer](assets/img/og-image.png)
 
 [![Live](https://img.shields.io/badge/live-juanmaescudier.com-00C853?style=flat-square)](https://www.juanmaescudier.com)
 [![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)](#)
@@ -53,16 +53,20 @@ It targets roles such as Cloud Engineer, DevOps Engineer, Platform Engineer, Inf
 ├── projects.html                   # Projects overview
 ├── project-jazz-en-la-jungla.html  # Case study — full AWS architecture diagram
 ├── contact.html                    # Contact (email · LinkedIn · GitHub)
-├── styles.css                      # Design system & all styles
-├── script.js                       # i18n engine, navigation, animations
 ├── favicon.svg
-├── robots.txt
-├── sitemap.xml
+├── robots.txt                      # Crawler rules
+├── sitemap.xml                     # Search-engine sitemap
 ├── _headers                        # Cloudflare security headers & caching
-├── assets/
-│   ├── Juan-Manuel-Escudier-CV.pdf
-│   └── og-image.png                # Social share / banner image
-└── README.md
+├── README.md
+└── assets/
+    ├── css/
+    │   └── styles.css              # Design system & all styles
+    ├── js/
+    │   └── script.js               # i18n engine, navigation, animations
+    ├── img/
+    │   └── og-image.png            # Social share / banner image
+    └── docs/
+        └── Juan-Manuel-Escudier-CV.pdf
 ```
 
 ## Run locally
@@ -98,8 +102,8 @@ Security headers and asset caching are configured in [`_headers`](_headers).
 
 ## Customisation
 
-- **Translations** live in the `I18N` dictionary at the top of [`script.js`](script.js). Each entry is `{ en, es }`; mark any text node with `data-i18n="key"` to make it translatable.
-- **Theme tokens** (colours, spacing, fonts, gradient) are CSS custom properties in the `:root` block of [`styles.css`](styles.css).
+- **Translations** live in the `I18N` dictionary at the top of [`assets/js/script.js`](assets/js/script.js). Each entry is `{ en, es }`; mark any text node with `data-i18n="key"` to make it translatable.
+- **Theme tokens** (colours, spacing, fonts, gradient) are CSS custom properties in the `:root` block of [`assets/css/styles.css`](assets/css/styles.css).
 - **SEO/domain:** canonical URLs, Open Graph and the sitemap reference `https://www.juanmaescudier.com`.
 
 ## License & credits

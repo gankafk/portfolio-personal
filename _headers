@@ -6,12 +6,16 @@
   Permissions-Policy: geolocation=(), microphone=(), camera=()
   Strict-Transport-Security: max-age=31536000; includeSubDomains
 
-# Long-cache immutable static assets
-/assets/*
+# Long-cache immutable assets (images & documents)
+/assets/img/*
   Cache-Control: public, max-age=31536000, immutable
 
-/styles.css
+/assets/docs/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Stylesheets & scripts — change between deploys, shorter cache
+/assets/css/*
   Cache-Control: public, max-age=86400
 
-/script.js
+/assets/js/*
   Cache-Control: public, max-age=86400
