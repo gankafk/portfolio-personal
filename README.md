@@ -1,6 +1,6 @@
 # Juanma Escudier — Portfolio
 
-![Juanma Escudier — Cloud & DevOps Engineer](assets/img/og-image.png)
+![Juanma Escudier — Cloud & DevOps Junior](assets/img/og-image.png)
 
 [![Live](https://img.shields.io/badge/live-juanmaescudier.com-00C853?style=flat-square)](https://www.juanmaescudier.com)
 [![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)](#)
@@ -9,7 +9,7 @@
 [![Cloudflare Pages](https://img.shields.io/badge/deploy-Cloudflare%20Pages-F38020?style=flat-square&logo=cloudflare&logoColor=white)](https://pages.cloudflare.com/)
 [![No frameworks](https://img.shields.io/badge/frameworks-none-5E6A7B?style=flat-square)](#)
 
-Personal portfolio for **Juan Manuel Escudier Vázquez** — Cloud & DevOps Engineer.
+Personal portfolio for **Juan Manuel Escudier Vázquez** — Cloud & DevOps Junior.
 A fast, static, framework-free site built from scratch with **HTML5, CSS3 and vanilla JavaScript**, deployed on **Cloudflare Workers & Pages**.
 
 🔗 **Live:** https://www.juanmaescudier.com
