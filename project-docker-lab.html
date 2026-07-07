@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en" data-page="projects">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Docker Lab · Juanma Escudier</title>
+  <meta name="description" content="Case study (under construction): a containers lab — a Python/Flask API with PostgreSQL and Redis on Docker Compose, growing into a hardened, multi-service system with CI/CD, Prometheus/Grafana observability and a migration to Kubernetes.">
+  <meta name="theme-color" content="#0A0D12">
+  <link rel="canonical" href="https://www.juanmaescudier.com/project-docker-lab.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Docker Lab — Case study">
+  <meta property="og:description" content="A containers lab from Docker Compose to Kubernetes: hardened images, CI/CD, an async worker + queue and Prometheus/Grafana observability.">
+  <meta property="og:url" content="https://www.juanmaescudier.com/project-docker-lab.html">
+  <meta property="og:image" content="https://www.juanmaescudier.com/assets/img/og-image.png">
+  <meta property="og:image:secure_url" content="https://www.juanmaescudier.com/assets/img/og-image.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Docker Lab">
+  <meta property="og:site_name" content="Juanma Escudier">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://www.juanmaescudier.com/assets/img/og-image.png">
+
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareSourceCode",
+    "name": "Docker Lab",
+    "description": "A containers lab (under construction): a Python/Flask API with PostgreSQL and Redis on Docker Compose, evolving with image hardening, a multi-service split (API + worker + queue), a CI/CD pipeline, Prometheus/Grafana observability and a final migration to a local Kubernetes cluster.",
+    "author": { "@type": "Person", "name": "Juan Manuel Escudier Vázquez" },
+    "codeRepository": "https://github.com/gankafk/docker-lab",
+    "programmingLanguage": ["Python", "YAML", "Bash"],
+    "runtimePlatform": "Docker · Kubernetes"
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main" data-i18n="a11y.skip">Skip to content</a>
+
+  <header class="nav">
+    <nav class="container nav-inner" aria-label="Primary">
+      <a class="brand" href="index.html" aria-label="Juanma Escudier — home">
+        <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 7l4 5-4 5" stroke="currentColor" stroke-width="2"/><path d="M12 17h7" stroke="currentColor" stroke-width="2"/></svg></span>
+        <span>Juanma<span class="blink">_</span></span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+        <li><a href="skills.html" data-i18n="nav.skills">Skills</a></li>
+        <li><a href="projects.html" class="active" data-i18n="nav.projects">Projects</a></li>
+        <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <div class="lang-toggle" role="group" aria-label="Language">
+          <button type="button" data-lang="en" aria-pressed="true">EN</button>
+          <button type="button" data-lang="es" aria-pressed="false">ES</button>
+        </div>
+        <button class="nav-burger" id="navBurger" aria-label="Menu" aria-controls="navLinks" aria-expanded="false"><span></span></button>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+
+    <!-- ===== DETAIL HERO ===== -->
+    <section class="section" style="padding-bottom: var(--sp-6)">
+      <div class="container detail-hero">
+        <p class="breadcrumb reveal">
+          <a href="index.html" data-i18n="nav.home">Home</a><span class="sep">/</span>
+          <a href="projects.html" data-i18n="nav.projects">Projects</a><span class="sep">/</span>
+          <span>Docker Lab</span>
+        </p>
+        <p class="section-label reveal"><span data-i18n="dock2.label">case study · containers</span></p>
+        <h1 class="reveal">Docker Lab</h1>
+        <p class="reveal" style="margin-bottom: var(--sp-4)"><span class="status-badge progress"><span class="dot"></span><span data-i18n="projects.docker.status">UNDER CONSTRUCTION</span></span></p>
+        <p class="lead reveal" data-i18n="dock2.lead">A hands-on containers lab, built step by step: a Python/Flask API with PostgreSQL and Redis that starts as a single Docker Compose service and grows into a hardened, multi-service system with CI/CD, observability and a final migration to Kubernetes. The goal is to justify every decision and show the full path from containers to orchestration.</p>
+        <div class="hero-actions reveal" data-reveal-delay="1">
+          <a class="btn btn-primary" href="https://github.com/gankafk/docker-lab" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49 0-.24-.01-.88-.01-1.73-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.49-1.11-1.49-.91-.64.07-.62.07-.62 1 .07 1.53 1.05 1.53 1.05.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.31.1-2.72 0 0 .84-.27 2.75 1.05a9.4 9.4 0 015 0c1.91-1.32 2.75-1.05 2.75-1.05.55 1.41.2 2.46.1 2.72.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.79-4.57 5.05.36.32.68.94.68 1.9 0 1.37-.01 2.48-.01 2.82 0 .27.18.6.69.49A10.02 10.02 0 0022 12.25C22 6.58 17.52 2 12 2z"/></svg>
+            <span data-i18n="jazz.btn.repo">Source code</span>
+          </a>
+          <a class="btn btn-ghost" href="projects.html">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2"/></svg>
+            <span data-i18n="jazz.btn.back">All projects</span>
+          </a>
+        </div>
+
+        <div class="spec-grid reveal" data-reveal-delay="2">
+          <div class="spec"><div class="k" data-i18n="jazz.spec.role">Role</div><div class="v" data-i18n="jazz.spec.role.v">Design &amp; build</div></div>
+          <div class="spec"><div class="k" data-i18n="jazz.spec.pattern">Pattern</div><div class="v" data-i18n="dock2.spec.pattern.v">Containers · multi-service</div></div>
+          <div class="spec"><div class="k" data-i18n="dock2.spec.state">Status</div><div class="v" data-i18n="dock2.spec.state.v">Under construction</div></div>
+          <div class="spec"><div class="k" data-i18n="lab2.spec.stack">Stack</div><div class="v">Docker · K8s · CI/CD</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== ARCHITECTURE DIAGRAM ===== -->
+    <section class="section" style="padding-top: 0; border-top: none;">
+      <div class="container">
+        <p class="section-label reveal"><span data-i18n="jazz.arch.label">architecture</span></p>
+        <h2 class="section-title reveal" data-i18n="dock2.arch.title">Target architecture</h2>
+        <div class="arch-figure reveal" data-reveal-delay="1">
+          <div class="arch-scroll"><svg viewBox="0 0 960 600" role="img" aria-label="Docker Lab detailed architecture (under construction). CI/CD: a developer pushes to GitHub Actions, which builds, scans and publishes container images to a registry (GHCR); images are deployed into the runtime. The runtime, orchestrated with Docker Compose and evolving toward a local Kubernetes cluster, runs a Flask API that queries PostgreSQL, caches in Redis and pushes jobs to a queue consumed by an async worker. Prometheus and Grafana scrape metrics." xmlns="http://www.w3.org/2000/svg"><defs><marker id="ar" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0 0L6 3L0 6" fill="none" stroke="#9BA6B7" stroke-width="1.4"/></marker></defs><rect x="190" y="168" width="470" height="398" fill="none" stroke="#2C3645" stroke-dasharray="6 5"/><text x="200" y="556" font-family="Geist Mono, monospace" font-size="11" fill="#5E6A7B">docker compose  ·  → kubernetes (objetivo)</text><path d="M 152 77 L 190 77" fill="none" stroke="#9BA6B7" stroke-width="1.5" marker-end="url(#ar)"/><path d="M 376 77 L 410 77" fill="none" stroke="#9BA6B7" stroke-width="1.5" marker-end="url(#ar)"/><path d="M 470 114 L 360 250" fill="none" stroke="#9BA6B7" stroke-width="1.5" marker-end="url(#ar)"/><path d="M 388 282 L 470 240" fill="none" stroke="#9BA6B7" stroke-width="1.5" marker-end="url(#ar)"/><path d="M 388 305 L 470 325" fill="none" stroke="#9BA6B7" stroke-width="1.5" marker-end="url(#ar)"/><path d="M 388 330 L 470 414" fill="none" stroke="#9BA6B7" stroke-width="1.5" marker-end="url(#ar)"/><path d="M 470 450 L 392 478" fill="none" stroke="#9BA6B7" stroke-width="1.5" marker-end="url(#ar)"/><path d="M 660 360 L 700 360" fill="none" stroke="#9BA6B7" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#ar)"/><path d="M 170 352 L 220 320" fill="none" stroke="#9BA6B7" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#ar)"/><rect x="24" y="40" width="128" height="74" fill="#0D1219" stroke="#212834"/><rect x="24" y="40" width="128" height="3" fill="#FFFFFF"/><g transform="translate(88.0,69) scale(0.78)"><circle cx="0" cy="-8" r="6" fill="none" stroke="#FFFFFF" stroke-width="2"/><path d="M -11 13 a11 11 0 0 1 22 0" fill="none" stroke="#FFFFFF" stroke-width="2"/></g><text x="88.0" y="100" text-anchor="middle" font-family="Geist, Arial, sans-serif" font-weight="600" font-size="13" fill="#FFFFFF">Developer</text><text x="88.0" y="115" text-anchor="middle" font-family="Geist Mono, monospace" font-size="9.5" fill="#5E6A7B">git push</text><rect x="190" y="40" width="186" height="74" fill="#0D1219" stroke="#212834"/><rect x="190" y="40" width="186" height="3" fill="#8E9BFF"/><g transform="translate(283.0,69) scale(0.78)"><circle cx="0" cy="0" r="11" fill="none" stroke="#8E9BFF" stroke-width="2"/><path d="M -4 -5 L 6 0 L -4 5 Z" fill="#8E9BFF"/></g><text x="283.0" y="100" text-anchor="middle" font-family="Geist, Arial, sans-serif" font-weight="600" font-size="13" fill="#FFFFFF">GitHub Actions</text><text x="283.0" y="115" text-anchor="middle" font-family="Geist Mono, monospace" font-size="9.5" fill="#5E6A7B">build · scan</text><rect x="410" y="40" width="150" height="74" fill="#0D1219" stroke="#212834"/><rect x="410" y="40" width="150" height="3" fill="#E5B567"/><g transform="translate(485.0,69) scale(0.78)"><path d="M 0 -12 L 12 -6 L 12 6 L 0 12 L -12 6 L -12 -6 Z" fill="none" stroke="#E5B567" stroke-width="1.7"/><path d="M -12 -6 L 0 0 L 12 -6 M 0 0 L 0 12" fill="none" stroke="#E5B567" stroke-width="1.3"/></g><text x="485.0" y="100" text-anchor="middle" font-family="Geist, Arial, sans-serif" font-weight="600" font-size="13" fill="#FFFFFF">Registry</text><text x="485.0" y="115" text-anchor="middle" font-family="Geist Mono, monospace" font-size="9.5" fill="#5E6A7B">GHCR · images</text><rect x="220" y="250" width="168" height="100" fill="#0D1219" stroke="#212834"/><rect x="220" y="250" width="168" height="3" fill="#2496ED"/><g transform="translate(304.0,279) scale(0.78)"><rect x="-14" y="-13" width="28" height="26" fill="none" stroke="#2496ED" stroke-width="2"/><line x1="-14" y1="-4" x2="14" y2="-4" stroke="#2496ED" stroke-width="1.4"/><line x1="-14" y1="4" x2="14" y2="4" stroke="#2496ED" stroke-width="1.4"/><circle cx="-9" cy="-8.5" r="1.5" fill="#2496ED"/><circle cx="-9" cy="0" r="1.5" fill="#2496ED"/><circle cx="-9" cy="8.5" r="1.5" fill="#2496ED"/></g><text x="304.0" y="310" text-anchor="middle" font-family="Geist, Arial, sans-serif" font-weight="600" font-size="13" fill="#FFFFFF">API · Flask</text><text x="304.0" y="325" text-anchor="middle" font-family="Geist Mono, monospace" font-size="9.5" fill="#5E6A7B">REST</text><rect x="470" y="196" width="160" height="74" fill="#0D1219" stroke="#212834"/><rect x="470" y="196" width="160" height="3" fill="#6E8FD6"/><g transform="translate(550.0,225) scale(0.78)"><ellipse cx="0" cy="-11" rx="14" ry="5" fill="none" stroke="#6E8FD6" stroke-width="2"/><path d="M -14 -11 L -14 11" stroke="#6E8FD6" stroke-width="2"/><path d="M 14 -11 L 14 11" stroke="#6E8FD6" stroke-width="2"/><path d="M -14 0 a14 5 0 0 0 28 0" fill="none" stroke="#6E8FD6" stroke-width="1.6"/><path d="M -14 11 a14 5 0 0 0 28 0" fill="none" stroke="#6E8FD6" stroke-width="2"/></g><text x="550.0" y="256" text-anchor="middle" font-family="Geist, Arial, sans-serif" font-weight="600" font-size="13" fill="#FFFFFF">PostgreSQL</text><text x="550.0" y="271" text-anchor="middle" font-family="Geist Mono, monospace" font-size="9.5" fill="#5E6A7B">datos</text><rect x="470" y="288" width="160" height="74" fill="#0D1219" stroke="#212834"/><rect x="470" y="288" width="160" height="3" fill="#DC382D"/><g transform="translate(550.0,317) scale(0.78)"><path d="M 0 -12 L 14 -5 L 0 2 L -14 -5 Z" fill="none" stroke="#DC382D" stroke-width="1.7"/><path d="M -14 2 L 0 9 L 14 2" fill="none" stroke="#DC382D" stroke-width="1.7"/><path d="M -14 9 L 0 16 L 14 9" fill="none" stroke="#DC382D" stroke-width="1.7"/></g><text x="550.0" y="348" text-anchor="middle" font-family="Geist, Arial, sans-serif" font-weight="600" font-size="13" fill="#FFFFFF">Redis</text><text x="550.0" y="363" text-anchor="middle" font-family="Geist Mono, monospace" font-size="9.5" fill="#5E6A7B">caché</text><rect x="470" y="380" width="160" height="74" fill="#0D1219" stroke="#212834"/><rect x="470" y="380" width="160" height="3" fill="#E5B567"/><g transform="translate(550.0,409) scale(0.78)"><rect x="-13" y="-11" width="26" height="22" fill="none" stroke="#E5B567" stroke-width="1.6"/><line x1="-8" y1="-5" x2="8" y2="-5" stroke="#E5B567" stroke-width="1.6"/><line x1="-8" y1="0" x2="8" y2="0" stroke="#E5B567" stroke-width="1.6"/><line x1="-8" y1="5" x2="8" y2="5" stroke="#E5B567" stroke-width="1.6"/></g><text x="550.0" y="440" text-anchor="middle" font-family="Geist, Arial, sans-serif" font-weight="600" font-size="13" fill="#FFFFFF">cola</text><text x="550.0" y="455" text-anchor="middle" font-family="Geist Mono, monospace" font-size="9.5" fill="#5E6A7B">broker</text><rect x="220" y="430" width="168" height="90" fill="#0D1219" stroke="#212834"/><rect x="220" y="430" width="168" height="3" fill="#2496ED"/><g transform="translate(304.0,459) scale(0.78)"><rect x="-2" y="-15" width="4" height="6" transform="rotate(0)" fill="#2496ED"/><rect x="-2" y="-15" width="4" height="6" transform="rotate(45)" fill="#2496ED"/><rect x="-2" y="-15" width="4" height="6" transform="rotate(90)" fill="#2496ED"/><rect x="-2" y="-15" width="4" height="6" transform="rotate(135)" fill="#2496ED"/><rect x="-2" y="-15" width="4" height="6" transform="rotate(180)" fill="#2496ED"/><rect x="-2" y="-15" width="4" height="6" transform="rotate(225)" fill="#2496ED"/><rect x="-2" y="-15" width="4" height="6" transform="rotate(270)" fill="#2496ED"/><rect x="-2" y="-15" width="4" height="6" transform="rotate(315)" fill="#2496ED"/><circle cx="0" cy="0" r="9" fill="none" stroke="#2496ED" stroke-width="2"/><circle cx="0" cy="0" r="3" fill="#2496ED"/></g><text x="304.0" y="490" text-anchor="middle" font-family="Geist, Arial, sans-serif" font-weight="600" font-size="13" fill="#FFFFFF">worker</text><text x="304.0" y="505" text-anchor="middle" font-family="Geist Mono, monospace" font-size="9.5" fill="#5E6A7B">jobs async</text><rect x="24" y="300" width="146" height="92" fill="#0D1219" stroke="#212834"/><rect x="24" y="300" width="146" height="3" fill="#EC6A9C"/><g transform="translate(97.0,329) scale(0.78)"><rect x="-13" y="-12" width="26" height="24" fill="none" stroke="#EC6A9C" stroke-width="1.6"/><rect x="-9" y="2" width="4" height="6" fill="#EC6A9C"/><rect x="-2" y="-4" width="4" height="12" fill="#EC6A9C"/><rect x="5" y="-8" width="4" height="16" fill="#EC6A9C"/></g><text x="97.0" y="360" text-anchor="middle" font-family="Geist, Arial, sans-serif" font-weight="600" font-size="13" fill="#FFFFFF">Prometheus</text><text x="97.0" y="375" text-anchor="middle" font-family="Geist Mono, monospace" font-size="9.5" fill="#5E6A7B">+ Grafana</text><rect x="700" y="300" width="180" height="120" fill="#0D1219" stroke="#212834" stroke-dasharray="5 4"/><rect x="700" y="300" width="180" height="3" fill="#326CE5"/><g transform="translate(790.0,329) scale(0.78)"><polygon points="0.0,-13.0 10.1,-8.2 12.7,2.7 5.9,11.6 -5.3,11.9 -12.6,3.4 -10.5,-7.6 -0.7,-13.0" fill="none" stroke="#326CE5" stroke-width="1.8"/><line x1="0" y1="0" x2="0.0" y2="-8.0" stroke="#326CE5" stroke-width="1.1"/><line x1="0" y1="0" x2="6.2" y2="-5.0" stroke="#326CE5" stroke-width="1.1"/><line x1="0" y1="0" x2="7.8" y2="1.7" stroke="#326CE5" stroke-width="1.1"/><line x1="0" y1="0" x2="3.6" y2="7.1" stroke="#326CE5" stroke-width="1.1"/><line x1="0" y1="0" x2="-3.3" y2="7.3" stroke="#326CE5" stroke-width="1.1"/><line x1="0" y1="0" x2="-7.7" y2="2.1" stroke="#326CE5" stroke-width="1.1"/><line x1="0" y1="0" x2="-6.5" y2="-4.7" stroke="#326CE5" stroke-width="1.1"/><line x1="0" y1="0" x2="-0.4" y2="-8.0" stroke="#326CE5" stroke-width="1.1"/><circle cx="0" cy="0" r="3.6" fill="none" stroke="#326CE5" stroke-width="1.5"/></g><text x="790.0" y="360" text-anchor="middle" font-family="Geist, Arial, sans-serif" font-weight="600" font-size="13" fill="#FFFFFF">Kubernetes</text><text x="790.0" y="375" text-anchor="middle" font-family="Geist Mono, monospace" font-size="9.5" fill="#5E6A7B">clúster local</text><rect x="155" y="62" width="32" height="14" fill="#0D1219"/><text x="171" y="73" text-anchor="middle" font-family="Geist Mono, monospace" font-size="10" fill="#5E6A7B">push</text><rect x="368" y="62" width="49" height="14" fill="#0D1219"/><text x="393" y="73" text-anchor="middle" font-family="Geist Mono, monospace" font-size="10" fill="#5E6A7B">publish</text><rect x="433" y="141" width="38" height="14" fill="#0D1219"/><text x="452" y="152" text-anchor="middle" font-family="Geist Mono, monospace" font-size="10" fill="#5E6A7B">image</text><rect x="411" y="231" width="38" height="14" fill="#0D1219"/><text x="430" y="242" text-anchor="middle" font-family="Geist Mono, monospace" font-size="10" fill="#5E6A7B">query</text><rect x="411" y="305" width="38" height="14" fill="#0D1219"/><text x="430" y="316" text-anchor="middle" font-family="Geist Mono, monospace" font-size="10" fill="#5E6A7B">cache</text><rect x="421" y="369" width="32" height="14" fill="#0D1219"/><text x="437" y="380" text-anchor="middle" font-family="Geist Mono, monospace" font-size="10" fill="#5E6A7B">jobs</text><rect x="405" y="461" width="49" height="14" fill="#0D1219"/><text x="430" y="472" text-anchor="middle" font-family="Geist Mono, monospace" font-size="10" fill="#5E6A7B">consume</text><rect x="655" y="343" width="49" height="14" fill="#0D1219"/><text x="680" y="354" text-anchor="middle" font-family="Geist Mono, monospace" font-size="10" fill="#5E6A7B">migrate</text><rect x="174" y="323" width="44" height="14" fill="#0D1219"/><text x="196" y="334" text-anchor="middle" font-family="Geist Mono, monospace" font-size="10" fill="#5E6A7B">scrape</text></svg></div>
+          <p class="arch-hint" aria-hidden="true"><span data-i18n="arch.hint">Swipe to explore the full diagram</span> <span class="arrow">&rarr;</span></p>
+          <p class="arch-caption" data-i18n="dock2.arch.caption">The target architecture. A developer pushes code; GitHub Actions builds, scans and publishes images to the registry, which are deployed into the runtime. Orchestrated with Docker Compose today and migrating to a local Kubernetes cluster, the Flask API queries PostgreSQL, caches in Redis and offloads async jobs to a worker via a queue. Prometheus and Grafana collect metrics.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== OVERVIEW ===== -->
+    <section class="section">
+      <div class="container">
+        <div class="content-block">
+          <p class="section-label reveal"><span data-i18n="jazz.ov.label">overview</span></p>
+          <h2 class="reveal" data-i18n="dock2.ov.title">What it is &amp; why I'm building it</h2>
+          <p class="reveal" data-i18n="dock2.ov.p1">Docker Lab is a progressive project: I build a small but realistic containerised system and evolve it stage by stage, so I can understand and defend every decision — from image layers to orchestration.</p>
+          <p class="reveal" data-i18n="dock2.ov.p2">It starts as a single Docker Compose service (Flask API + PostgreSQL + Redis) and grows toward a hardened, observable, multi-service system that finally runs on a local Kubernetes cluster.</p>
+
+          <h3 class="reveal" data-i18n="jazz.ov.h3">Highlights</h3>
+          <ul class="reveal">
+            <li data-i18n="dock2.ov.l1"><strong>Container-first</strong> — a Flask API with PostgreSQL and Redis, defined and run with Docker Compose.</li>
+            <li data-i18n="dock2.ov.l2"><strong>Hardened images</strong> — multi-stage builds, non-root users and vulnerability scanning in the pipeline.</li>
+            <li data-i18n="dock2.ov.l3"><strong>Multi-service</strong> — the app splits into API + worker + queue for asynchronous processing.</li>
+            <li data-i18n="dock2.ov.l4"><strong>CI/CD</strong> — GitHub Actions builds, scans and publishes images to a registry (GHCR).</li>
+            <li data-i18n="dock2.ov.l5"><strong>Observability &amp; orchestration</strong> — Prometheus + Grafana metrics, then a final migration to Kubernetes.</li>
+          </ul>
+        </div>
+
+        <div class="content-block" style="max-width: none;">
+          <p class="section-label reveal" style="margin-top: var(--sp-7)"><span data-i18n="jazz.dec.label">engineering decisions</span></p>
+          <h2 class="reveal" data-i18n="jazz.dec.title">Key decisions</h2>
+          <div class="decision-grid">
+            <div class="decision reveal">
+              <p class="q" data-i18n="dock2.dec.1.q">// why containers?</p>
+              <h4 data-i18n="dock2.dec.1.h">Reproducible everywhere</h4>
+              <p data-i18n="dock2.dec.1.b">Compose describes the whole stack as code: the same environment on my laptop, in CI and in production. No "works on my machine".</p>
+            </div>
+            <div class="decision reveal" data-reveal-delay="1">
+              <p class="q" data-i18n="dock2.dec.2.q">// why harden images?</p>
+              <h4 data-i18n="dock2.dec.2.h">Small, safe images</h4>
+              <p data-i18n="dock2.dec.2.b">Multi-stage builds keep images small; non-root users and vulnerability scans reduce the attack surface before anything ships.</p>
+            </div>
+            <div class="decision reveal" data-reveal-delay="2">
+              <p class="q" data-i18n="dock2.dec.3.q">// why a worker + queue?</p>
+              <h4 data-i18n="dock2.dec.3.h">Async by design</h4>
+              <p data-i18n="dock2.dec.3.b">Splitting slow work into a worker behind a queue keeps the API responsive and lets each part scale independently.</p>
+            </div>
+            <div class="decision reveal" data-reveal-delay="3">
+              <p class="q" data-i18n="dock2.dec.4.q">// why Kubernetes?</p>
+              <h4 data-i18n="dock2.dec.4.h">From Compose to orchestration</h4>
+              <p data-i18n="dock2.dec.4.b">Compose is perfect to build and learn; migrating to a local Kubernetes cluster shows the real path to self-healing, scaling and rollouts.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="content-block" style="max-width: none;">
+          <p class="section-label reveal" style="margin-top: var(--sp-7)"><span data-i18n="lab2.road.label">build status</span></p>
+          <h2 class="reveal" data-i18n="dock2.road.title">The build plan, stage by stage</h2>
+          <p class="reveal" style="max-width: 76ch;" data-i18n="dock2.road.intro">This lab is under active construction. The foundation runs; the rest is a clear, honest roadmap from containers to orchestration.</p>
+          <div class="decision-grid">
+            <div class="decision reveal">
+              <p class="q" style="color: var(--success)" data-i18n="dock2.road.done">// foundation · running</p>
+              <ul style="list-style:none; display:grid; gap:8px; margin:0;">
+                <li data-i18n="dock2.m0">Base stack: Flask API + PostgreSQL + Redis on Docker Compose</li>
+              </ul>
+            </div>
+            <div class="decision reveal" data-reveal-delay="1">
+              <p class="q" style="color: var(--warning)" data-i18n="dock2.road.next">// in progress · next</p>
+              <ul style="list-style:none; display:grid; gap:8px; margin:0;">
+                <li data-i18n="dock2.m1">Image hardening: multi-stage, non-root, vulnerability scanning</li>
+                <li data-i18n="dock2.m2">Split into services: API + worker + queue</li>
+                <li data-i18n="dock2.m3">CI/CD: build, scan and publish images (GitHub Actions &rarr; GHCR)</li>
+                <li data-i18n="dock2.m4">Observability: Prometheus + Grafana</li>
+                <li data-i18n="dock2.m5">Migration to a local Kubernetes cluster</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="content-block" style="max-width: none;">
+          <p class="section-label reveal" style="margin-top: var(--sp-7)"><span data-i18n="jazz.stack.label">tech stack</span></p>
+          <h2 class="reveal" data-i18n="jazz.stack.title">Stack &amp; responsibilities</h2>
+          <table class="stack-table reveal">
+            <thead>
+              <tr>
+                <th data-i18n="jazz.stack.th.tech">Technology</th>
+                <th data-i18n="jazz.stack.th.layer">Layer</th>
+                <th data-i18n="jazz.stack.th.role">Responsibility</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Docker · Compose</td><td data-i18n="dock2.l.orch">Orchestration</td><td data-i18n="dock2.r.orch">Defines and runs the whole multi-container stack as code.</td></tr>
+              <tr><td>Python · Flask</td><td data-i18n="dock2.l.api">API</td><td data-i18n="dock2.r.api">REST API and application logic.</td></tr>
+              <tr><td>PostgreSQL</td><td data-i18n="jazz.stack.l.data">Data</td><td data-i18n="dock2.r.db">Relational persistence for the app.</td></tr>
+              <tr><td>Redis</td><td data-i18n="dock2.l.cache">Cache · Broker</td><td data-i18n="dock2.r.cache">In-memory cache and job-queue backend.</td></tr>
+              <tr><td>worker</td><td data-i18n="dock2.l.worker">Worker</td><td data-i18n="dock2.r.worker">Consumes queued jobs for async processing.</td></tr>
+              <tr><td>GitHub Actions</td><td data-i18n="dock2.l.cicd">CI/CD</td><td data-i18n="dock2.r.cicd">Builds, scans and publishes images to GHCR.</td></tr>
+              <tr><td>multi-stage · scan</td><td data-i18n="jazz.stack.l.sec">Security</td><td data-i18n="dock2.r.sec">Image hardening: non-root, minimal layers, vuln scanning.</td></tr>
+              <tr><td>Prometheus · Grafana</td><td data-i18n="lab2.l.mon">Monitoring</td><td data-i18n="dock2.r.mon">Metrics, dashboards and alerts.</td></tr>
+              <tr><td>Kubernetes</td><td data-i18n="dock2.l.k8s">Orchestration</td><td data-i18n="dock2.r.k8s">Target platform: self-healing, scaling and rollouts.</td></tr>
+              <tr><td>Git · GitHub</td><td data-i18n="lab2.l.ver">Versioning</td><td data-i18n="dock2.r.ver">Everything versioned and documented, stage by stage.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CTA ===== -->
+    <section class="section" aria-label="Call to action">
+      <div class="container">
+        <div class="cta reveal">
+          <div>
+            <h2 data-i18n="dock2.cta.title">Follow the build</h2>
+            <p data-i18n="dock2.cta.sub">The repo grows stage by stage, each with its decisions and how to reproduce it — or get in touch to talk it through.</p>
+          </div>
+          <div class="actions">
+            <a class="btn btn-primary" href="https://github.com/gankafk/docker-lab" target="_blank" rel="noopener"><span data-i18n="jazz.btn.repo">Source code</span></a>
+            <a class="btn" href="contact.html"><span data-i18n="cta.contact">Get in touch</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>
+        <a class="brand" href="index.html">
+          <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 7l4 5-4 5" stroke="currentColor" stroke-width="2"/><path d="M12 17h7" stroke="currentColor" stroke-width="2"/></svg></span>
+          <span>Juanma Escudier</span>
+        </a>
+        <p class="footer-meta">Cloud &amp; DevOps Junior · Cádiz, ES<br><span data-i18n="footer.tagline">building reliable, automated infrastructure</span></p>
+        <p class="footer-build"><span class="ok">●</span> <span data-i18n="footer.build">Built with HTML, CSS, JavaScript · deployed on Cloudflare Pages</span></p>
+      </div>
+      <div class="footer-links" aria-label="Footer">
+        <a href="index.html" data-i18n="nav.home">Home</a>
+        <a href="skills.html" data-i18n="nav.skills">Skills</a>
+        <a href="projects.html" data-i18n="nav.projects">Projects</a>
+        <a href="contact.html" data-i18n="nav.contact">Contact</a>
+        <a href="assets/docs/Juan-Manuel-Escudier-CV-2026-07-06.pdf" download data-i18n="footer.cv">CV (PDF)</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/script.js" defer></script>
+</body>
+</html>
